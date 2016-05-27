@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D4AF51D41CCAF350002FC36B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF51D31CCAF350002FC36B /* AppDelegate.swift */; };
-		D4AF51D61CCAF350002FC36B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF51D51CCAF350002FC36B /* ViewController.swift */; };
+		D4AF51D61CCAF350002FC36B /* MeMeCreatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF51D51CCAF350002FC36B /* MeMeCreatorViewController.swift */; };
 		D4AF51D91CCAF350002FC36B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4AF51D71CCAF350002FC36B /* Main.storyboard */; };
 		D4AF51DB1CCAF350002FC36B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4AF51DA1CCAF350002FC36B /* Assets.xcassets */; };
 		D4AF51DE1CCAF350002FC36B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4AF51DC1CCAF350002FC36B /* LaunchScreen.storyboard */; };
@@ -17,7 +17,7 @@
 /* Begin PBXFileReference section */
 		D4AF51D01CCAF350002FC36B /* MeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4AF51D31CCAF350002FC36B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D4AF51D51CCAF350002FC36B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D4AF51D51CCAF350002FC36B /* MeMeCreatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeMeCreatorViewController.swift; sourceTree = "<group>"; };
 		D4AF51D81CCAF350002FC36B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D4AF51DA1CCAF350002FC36B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4AF51DD1CCAF350002FC36B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,7 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				D4AF51D31CCAF350002FC36B /* AppDelegate.swift */,
-				D4AF51D51CCAF350002FC36B /* ViewController.swift */,
+				D4AF51D51CCAF350002FC36B /* MeMeCreatorViewController.swift */,
 				D4AF51D71CCAF350002FC36B /* Main.storyboard */,
 				D4AF51DA1CCAF350002FC36B /* Assets.xcassets */,
 				D4AF51DC1CCAF350002FC36B /* LaunchScreen.storyboard */,
@@ -96,6 +96,7 @@
 				TargetAttributes = {
 					D4AF51CF1CCAF350002FC36B = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = GAR9GU6C4G;
 					};
 				};
 			};
@@ -135,7 +136,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4AF51D61CCAF350002FC36B /* ViewController.swift in Sources */,
+				D4AF51D61CCAF350002FC36B /* MeMeCreatorViewController.swift in Sources */,
 				D4AF51D41CCAF350002FC36B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,10 +252,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MeMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ekantiktechstudio.MeMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -262,10 +266,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MeMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ekantiktechstudio.MeMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -288,6 +295,7 @@
 				D4AF51E41CCAF350002FC36B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
