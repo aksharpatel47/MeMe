@@ -5,6 +5,12 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Impact.ttf">
+            <string>Impact</string>
+            <string>Impact</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Me Me Creator View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -24,6 +30,9 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="UtY-6a-doz"/>
                                     <barButtonItem systemItem="camera" id="Pk8-Hu-6l6">
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="getImageFromCamera:" destination="BYZ-38-t0r" id="7e8-vm-IWC"/>
+                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="2JZ-Bj-JYl"/>
                                     <barButtonItem title="Album" id="ruu-RH-xfC">
@@ -40,13 +49,31 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WET-Zs-9hJ">
+                                <rect key="frame" x="8" y="76" width="584" height="49"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="40"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="djq-Tm-4v3">
+                                <rect key="frame" x="8" y="495" width="584" height="49"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="40"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="djq-Tm-4v3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="2a2-wR-Ouy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ufn-Q2-9Oj" secondAttribute="trailing" constant="-20" id="4M8-Wx-Qh8"/>
                             <constraint firstItem="ufn-Q2-9Oj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="A1H-tt-hXc"/>
+                            <constraint firstItem="WET-Zs-9hJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="12" id="GmC-jl-Ffc"/>
+                            <constraint firstItem="CyM-sb-y6f" firstAttribute="top" secondItem="djq-Tm-4v3" secondAttribute="bottom" constant="12" id="KRb-v7-fvh"/>
                             <constraint firstItem="CyM-sb-y6f" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="RhJ-LS-xpG"/>
+                            <constraint firstAttribute="trailing" secondItem="djq-Tm-4v3" secondAttribute="trailing" constant="8" id="T7F-kE-ESA"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="CyM-sb-y6f" secondAttribute="bottom" id="Ups-R8-W38"/>
+                            <constraint firstAttribute="trailing" secondItem="WET-Zs-9hJ" secondAttribute="trailing" constant="8" id="XDn-yJ-mcA"/>
+                            <constraint firstItem="WET-Zs-9hJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="eOn-JZ-M9l"/>
                             <constraint firstItem="ufn-Q2-9Oj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="uaO-Z3-eva"/>
                             <constraint firstItem="CyM-sb-y6f" firstAttribute="top" secondItem="ufn-Q2-9Oj" secondAttribute="bottom" id="xBI-b1-8VQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="CyM-sb-y6f" secondAttribute="trailing" constant="-20" id="zFX-2q-b7d"/>
@@ -54,8 +81,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="2vt-0h-wzz"/>
                     <connections>
+                        <outlet property="bottomTextView" destination="djq-Tm-4v3" id="4mh-SF-kwl"/>
                         <outlet property="cameraButton" destination="Pk8-Hu-6l6" id="ZLI-dK-v9f"/>
                         <outlet property="imageView" destination="ufn-Q2-9Oj" id="mas-TG-4jc"/>
+                        <outlet property="topTextView" destination="WET-Zs-9hJ" id="mQc-3j-eu6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
