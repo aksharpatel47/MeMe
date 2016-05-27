@@ -10,42 +10,35 @@ import UIKit
 
 class MeMeCreatorViewController: UIViewController {
 
+  // MARK: Outlets
   @IBOutlet weak var cameraButton: UIBarButtonItem!
   @IBOutlet weak var imageView: UIImageView!
   
+  // MARK: Lifecycle Methods
   override func viewDidLoad() {
     super.viewDidLoad()
     
     if !UIImagePickerController.isSourceTypeAvailable(.Camera) {
       cameraButton.enabled = false
     }
-    
-    setNeedsStatusBarAppearanceUpdate()
-    navigationController?.navigationBar.barTintColor = UIColor.brownColor()
   }
   
-  override func preferredStatusBarStyle() -> UIStatusBarStyle {
-    return UIStatusBarStyle.LightContent
-  }
-
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
-
+  // MARK: Actions
   @IBAction func pickImageFromGallery(sender: AnyObject) {
     let imagePickerController = UIImagePickerController()
     imagePickerController.sourceType = .PhotoLibrary
+    imagePickerController.allowsEditing = true
     imagePickerController.delegate = self
     
     presentViewController(imagePickerController, animated: true, completion: nil)
   }
 }
 
+// MARK: - UIImagePickerControllerDelegate
 extension MeMeCreatorViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
   func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
     dismissViewControllerAnimated(true, completion: nil)
-    if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+    if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
       imageView.image = image
     }
   }
