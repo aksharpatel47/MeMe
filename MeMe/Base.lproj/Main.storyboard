@@ -87,8 +87,8 @@
                             <constraint firstItem="CyM-sb-y6f" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="RhJ-LS-xpG"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="CyM-sb-y6f" secondAttribute="bottom" id="Ups-R8-W38"/>
                             <constraint firstItem="15f-sR-7ws" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="jI6-eM-3SK"/>
-                            <constraint firstItem="CyM-sb-y6f" firstAttribute="top" secondItem="15f-sR-7ws" secondAttribute="bottom" id="nR6-fe-wMc"/>
                             <constraint firstItem="15f-sR-7ws" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="qdC-dB-hCj"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="15f-sR-7ws" secondAttribute="bottom" constant="44" id="sEy-D5-Ts2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="CyM-sb-y6f" secondAttribute="trailing" constant="-20" id="zFX-2q-b7d"/>
                         </constraints>
                     </view>
