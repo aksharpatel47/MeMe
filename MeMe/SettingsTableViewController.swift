@@ -23,6 +23,23 @@ class SettingsTableViewController: UITableViewController {
     super.viewDidLoad()
     self.clearsSelectionOnViewWillAppear = true
     tableView.tableFooterView = UIView()
+    subscribeToFontChangeNotification()
+  }
+  
+  deinit {
+    unsubscribeFromFontChangeNotification()
+  }
+  
+  func subscribeToFontChangeNotification() {
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(fontChanged(_:)), name: Constants.Events.fontChanged, object: nil)
+  }
+  
+  func unsubscribeFromFontChangeNotification() {
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: Constants.Events.fontChanged, object: nil)
+  }
+  
+  func fontChanged(notification: NSNotification) {
+    tableView.reloadData()
   }
   
   // MARK: - Table view data source
@@ -31,58 +48,39 @@ class SettingsTableViewController: UITableViewController {
   }
   
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 1
+    return 2
   }
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellReuseIdentifiers.SettingsTable.setImageCropPreferenceCell, forIndexPath: indexPath) as! ImageCropPreferenceTableViewCell
-    cell.imageCropPreferenceSwitch.on = NSUserDefaults.standardUserDefaults().boolForKey(Constants.OfflineKeys.imageCropPreference)
-    return cell
+    switch indexPath.row {
+    case 0:
+      let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellReuseIdentifiers.SettingsTable.selectFontCell, forIndexPath: indexPath)
+      cell.detailTextLabel?.text = NSUserDefaults.standardUserDefaults().stringForKey(Constants.OfflineKeys.fontToUse)
+      return cell
+    case 1:
+      let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellReuseIdentifiers.SettingsTable.setImageCropPreferenceCell, forIndexPath: indexPath) as! ImageCropPreferenceTableViewCell
+      cell.imageCropPreferenceSwitch.on = NSUserDefaults.standardUserDefaults().boolForKey(Constants.OfflineKeys.imageCropPreference)
+      return cell
+    default:
+      return UITableViewCell()
+    }
   }
   
-  /*
-   // Override to support conditional editing of the table view.
-   override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-   // Return false if you do not want the specified item to be editable.
-   return true
-   }
-   */
+  // MARK: - Table view delegate
+  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    
+    if indexPath.row == 0 {
+      performSegueWithIdentifier(Constants.Segues.selectFont, sender: nil)
+    }
+  }
   
-  /*
-   // Override to support editing the table view.
-   override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-   if editingStyle == .Delete {
-   // Delete the row from the data source
-   tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-   } else if editingStyle == .Insert {
-   // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-   }
-   }
-   */
-  
-  /*
-   // Override to support rearranging the table view.
-   override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-   
-   }
-   */
-  
-  /*
-   // Override to support conditional rearranging of the table view.
-   override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-   // Return false if you do not want the item to be re-orderable.
-   return true
-   }
-   */
-  
-  /*
-   // MARK: - Navigation
-   
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-   // Get the new view controller using segue.destinationViewController.
-   // Pass the selected object to the new view controller.
-   }
-   */
-  
+  // MARK: - Navigation
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == Constants.Segues.selectFont {
+      if let selectFontController = segue.destinationViewController as? SelectFontViewController {
+        selectFontController.currentFont = NSUserDefaults.standardUserDefaults().stringForKey(Constants.OfflineKeys.fontToUse)!
+      }
+    }
+  }
 }

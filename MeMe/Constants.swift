@@ -10,10 +10,22 @@ import Foundation
 
 struct Constants {
   
+  struct Segues {
+    static let selectFont = "selectFont"
+  }
+  
+  struct Events {
+    static let fontChanged = "fontChanged"
+  }
+  
   struct CellReuseIdentifiers {
     struct SettingsTable {
       static let selectFontCell = "selectFontCell"
       static let setImageCropPreferenceCell = "setImageCropPreferenceCell"
+    }
+    
+    struct FontsTable {
+      static let fontCell = "fontCell"
     }
   }
   

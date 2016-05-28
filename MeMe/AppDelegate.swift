@@ -18,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // Setting default user preferences
     NSUserDefaults.standardUserDefaults().registerDefaults([
-      Constants.OfflineKeys.imageCropPreference: true
+      Constants.OfflineKeys.imageCropPreference: true,
+      Constants.OfflineKeys.fontToUse: "Impact"
     ])
     
     return true

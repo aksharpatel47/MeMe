@@ -19,6 +19,7 @@ class MeMeCreatorViewController: UIViewController {
   @IBOutlet weak var shareButton: UIBarButtonItem!
   
   var allowImageCrop = true
+  var fontToUse = "Impact"
   
   // MARK: Lifecycle Methods
   override func viewDidLoad() {
@@ -36,9 +37,12 @@ class MeMeCreatorViewController: UIViewController {
       cameraButton.enabled = false
     }
     
+    allowImageCrop = NSUserDefaults.standardUserDefaults().boolForKey(Constants.OfflineKeys.imageCropPreference)
+    fontToUse = NSUserDefaults.standardUserDefaults().stringForKey(Constants.OfflineKeys.fontToUse)!
+    
     let memeTextAttributes: [String:AnyObject] = [
       NSForegroundColorAttributeName: UIColor.whiteColor(),
-      NSFontAttributeName: UIFont(name: "Impact", size: 40)!,
+      NSFontAttributeName: UIFont(name: fontToUse, size: 40)!,
       NSStrokeColorAttributeName: UIColor.blackColor(),
       NSStrokeWidthAttributeName: -2.0
     ]
@@ -49,8 +53,6 @@ class MeMeCreatorViewController: UIViewController {
     bottomTextView.textAlignment = .Center
     
     subscribeToKeyboardEvents()
-    
-    allowImageCrop = NSUserDefaults.standardUserDefaults().boolForKey(Constants.OfflineKeys.imageCropPreference)
   }
   
   override func viewWillDisappear(animated: Bool) {
