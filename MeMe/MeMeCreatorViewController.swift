@@ -18,6 +18,8 @@ class MeMeCreatorViewController: UIViewController {
   @IBOutlet weak var bottomToolbar: UIToolbar!
   @IBOutlet weak var shareButton: UIBarButtonItem!
   
+  var allowImageCrop = true
+  
   // MARK: Lifecycle Methods
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -47,6 +49,8 @@ class MeMeCreatorViewController: UIViewController {
     bottomTextView.textAlignment = .Center
     
     subscribeToKeyboardEvents()
+    
+    allowImageCrop = NSUserDefaults.standardUserDefaults().boolForKey(Constants.OfflineKeys.imageCropPreference)
   }
   
   override func viewWillDisappear(animated: Bool) {
@@ -59,7 +63,7 @@ class MeMeCreatorViewController: UIViewController {
   @IBAction func pickImageFromGallery(sender: UIBarButtonItem) {
     let imagePickerController = UIImagePickerController()
     imagePickerController.sourceType = .PhotoLibrary
-    imagePickerController.allowsEditing = true
+    imagePickerController.allowsEditing = allowImageCrop
     imagePickerController.delegate = self
     
     presentViewController(imagePickerController, animated: true, completion: nil)
@@ -68,7 +72,7 @@ class MeMeCreatorViewController: UIViewController {
   @IBAction func getImageFromCamera(sender: UIBarButtonItem) {
     let getImageController = UIImagePickerController()
     getImageController.sourceType = .Camera
-    getImageController.allowsEditing = true
+    getImageController.allowsEditing = allowImageCrop
     getImageController.delegate = self
     
     presentViewController(getImageController, animated: true, completion: nil)
@@ -148,7 +152,8 @@ class MeMeCreatorViewController: UIViewController {
 extension MeMeCreatorViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
   func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
     dismissViewControllerAnimated(true, completion: nil)
-    if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+    let imageKey = allowImageCrop ? UIImagePickerControllerEditedImage : UIImagePickerControllerOriginalImage
+    if let image = info[imageKey] as? UIImage {
       imageView.image = image
       shareButton.enabled = true
     }

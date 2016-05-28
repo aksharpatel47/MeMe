@@ -15,7 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    // Override point for customization after application launch.
+    
+    // Setting default user preferences
+    NSUserDefaults.standardUserDefaults().registerDefaults([
+      Constants.OfflineKeys.imageCropPreference: true
+    ])
+    
     return true
   }
 
