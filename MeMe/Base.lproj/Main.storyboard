@@ -64,24 +64,23 @@
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="UtY-6a-doz"/>
                                     <barButtonItem systemItem="camera" id="Pk8-Hu-6l6">
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" red="0.91764705879999997" green="0.50196078430000002" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="getImageFromCamera:" destination="BYZ-38-t0r" id="7e8-vm-IWC"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="2JZ-Bj-JYl"/>
                                     <barButtonItem title="Album" id="ruu-RH-xfC">
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" red="0.91764705879999997" green="0.50196078430000002" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="pickImageFromGallery:" destination="BYZ-38-t0r" id="e5I-GG-6ab"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="1Bj-Xl-m23"/>
                                 </items>
-                                <color key="barTintColor" red="0.4039215686" green="0.2274509804" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="0.41568627450000001" green="0.1058823529" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="15f-sR-7ws" secondAttribute="trailing" id="E6v-Nk-czw"/>
                             <constraint firstItem="CyM-sb-y6f" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="RhJ-LS-xpG"/>
@@ -96,20 +95,20 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="L3s-GN-PG4"/>
                         <leftBarButtonItems>
                             <barButtonItem systemItem="action" id="sgo-wZ-261">
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.91764705879999997" green="0.50196078430000002" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="shareMemedImage:" destination="BYZ-38-t0r" id="rOv-y9-aTS"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="Settings" id="Pev-Hk-yfC" userLabel="Settings Button Item">
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.91764705879999997" green="0.50196078430000002" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="pkO-Zb-fqG" kind="show" id="C5c-3f-bnZ"/>
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="22X-EZ-mLg">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="0.91764705879999997" green="0.50196078430000002" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="resetMemeEditor:" destination="BYZ-38-t0r" id="8dF-RY-tfV"/>
                             </connections>
@@ -177,6 +176,7 @@
                                         </label>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BWN-ex-XbN">
                                             <rect key="frame" x="536" y="6" width="51" height="31"/>
+                                            <color key="onTintColor" red="0.2901960784" green="0.078431372550000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="imageCropPreferenceChanged:" destination="eDT-0m-5L9" eventType="valueChanged" id="tA0-xJ-CKx"/>
                                             </connections>
@@ -228,7 +228,7 @@
                             <searchBar contentMode="redraw" placeholder="Search Font" translatesAutoresizingMaskIntoConstraints="NO" id="1di-kN-BWG">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="barTintColor" red="0.28937112572031226" green="0.16450343682735247" blue="0.52225443059487175" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="0.29019607843137252" green="0.078431372549019607" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="amu-tm-djL" id="iO9-fO-vxZ"/>
@@ -297,11 +297,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="jpL-Gn-cEK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.4039215686" green="0.2274509804" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.91764705879999997" green="0.50196078430000002" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.41568627450000001" green="0.1058823529" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <color key="textShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.91764705882352937" green="0.50196078431372548" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
