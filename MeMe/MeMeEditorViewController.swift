@@ -1,5 +1,5 @@
 //
-//  MeMeCreatorViewController.swift
+//  MeMeEditorViewController.swift
 //  MeMe
 //
 //  Created by Akshar Patel on 23/04/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MeMeCreatorViewController: UIViewController {
+class MeMeEditorViewController: UIViewController {
 
   // MARK: Outlets
   @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -19,6 +19,7 @@ class MeMeCreatorViewController: UIViewController {
   @IBOutlet weak var shareButton: UIBarButtonItem!
   @IBOutlet weak var memeView: UIView!
   
+  // MARK: Properties
   /// Boolean value which determines if the image should be cropped after picking / taking it from camera / library
   var allowImageCrop = true
   /// This variables stores the font that the Meme creator will use.
@@ -103,6 +104,7 @@ class MeMeCreatorViewController: UIViewController {
     shareButton.enabled = false
   }
   
+  // MARK: Keyboard events functions
   /// This function subscribes the controller to keyboard notifications. This is required to push the view upwards when the keyboard
   /// appears.
   func subscribeToKeyboardEvents() {
@@ -142,6 +144,7 @@ class MeMeCreatorViewController: UIViewController {
     return keyboardFrame.height
   }
   
+  // MARK: Additional Functions
   /// Save function save's the meme.
   func save() {
     let _ = MeMe(topText: topTextView.text!, bottomText: bottomTextView.text!, image: imageView.image!, memedImage: generateMemedImage())
@@ -159,7 +162,7 @@ class MeMeCreatorViewController: UIViewController {
 }
 
 // MARK: - UIImagePickerControllerDelegate
-extension MeMeCreatorViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+extension MeMeEditorViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
   func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
     dismissViewControllerAnimated(true, completion: nil)
     let imageKey = allowImageCrop ? UIImagePickerControllerEditedImage : UIImagePickerControllerOriginalImage
@@ -171,7 +174,7 @@ extension MeMeCreatorViewController: UINavigationControllerDelegate, UIImagePick
 }
 
 // MARK: - UITextFieldDelegate
-extension MeMeCreatorViewController: UITextFieldDelegate {
+extension MeMeEditorViewController: UITextFieldDelegate {
   func textFieldDidBeginEditing(textField: UITextField) {
     if textField.text == "TOP" || textField.text == "BOTTOM" {
       textField.text = ""
