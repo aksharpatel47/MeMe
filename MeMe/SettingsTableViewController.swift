@@ -21,7 +21,9 @@ class SettingsTableViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     self.clearsSelectionOnViewWillAppear = true
+    
     tableView.tableFooterView = UIView()
     subscribeToFontChangeNotification()
   }

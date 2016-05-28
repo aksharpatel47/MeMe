@@ -17,8 +17,11 @@ class MeMeCreatorViewController: UIViewController {
   @IBOutlet weak var bottomTextView: UITextField!
   @IBOutlet weak var bottomToolbar: UIToolbar!
   @IBOutlet weak var shareButton: UIBarButtonItem!
+  @IBOutlet weak var memeView: UIView!
   
+  /// Boolean value which determines if the image should be cropped after picking / taking it from camera / library
   var allowImageCrop = true
+  /// This variables stores the font that the Meme creator will use.
   var fontToUse = "Impact"
   
   // MARK: Lifecycle Methods
@@ -37,14 +40,16 @@ class MeMeCreatorViewController: UIViewController {
       cameraButton.enabled = false
     }
     
+    // Getting the values from user defaults.
     allowImageCrop = NSUserDefaults.standardUserDefaults().boolForKey(Constants.OfflineKeys.imageCropPreference)
     fontToUse = NSUserDefaults.standardUserDefaults().stringForKey(Constants.OfflineKeys.fontToUse)!
     
+    // Attributes of top and bottom text fields
     let memeTextAttributes: [String:AnyObject] = [
       NSForegroundColorAttributeName: UIColor.whiteColor(),
       NSFontAttributeName: UIFont(name: fontToUse, size: 40)!,
       NSStrokeColorAttributeName: UIColor.blackColor(),
-      NSStrokeWidthAttributeName: -2.0
+      NSStrokeWidthAttributeName: -3.0
     ]
     
     topTextView.defaultTextAttributes = memeTextAttributes
@@ -98,6 +103,8 @@ class MeMeCreatorViewController: UIViewController {
     shareButton.enabled = false
   }
   
+  /// This function subscribes the controller to keyboard notifications. This is required to push the view upwards when the keyboard
+  /// appears.
   func subscribeToKeyboardEvents() {
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
@@ -108,6 +115,7 @@ class MeMeCreatorViewController: UIViewController {
     NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
   }
   
+  /// When the keyboard hides, we set the frame's y origin to its initial value.
   func keyboardWillHide(notification: NSNotification) {
     view.frame.origin.y = 0
   }
@@ -130,21 +138,17 @@ class MeMeCreatorViewController: UIViewController {
     return keyboardFrame.height
   }
   
+  /// Save function save's the meme.
   func save() {
     let _ = MeMe(topText: topTextView.text!, bottomText: bottomTextView.text!, image: imageView.image!, memedImage: generateMemedImage())
   }
   
   func generateMemedImage() -> UIImage {
-    bottomToolbar.hidden = true
-    navigationController?.navigationBar.hidden = true
-    
-    UIGraphicsBeginImageContext(view.frame.size)
-    view.drawViewHierarchyInRect(view.frame, afterScreenUpdates: true)
+    // Using memeView and its bounds to draw graphics instead of the main view. Hence, hiding navigationBar and bottomBar not necessary.
+    UIGraphicsBeginImageContextWithOptions(memeView.frame.size, true, 0.0)
+    memeView.drawViewHierarchyInRect(memeView.bounds, afterScreenUpdates: true)
     let memedImage = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
-    
-    navigationController?.navigationBar.hidden = false
-    bottomToolbar.hidden = false
     
     return memedImage
   }
