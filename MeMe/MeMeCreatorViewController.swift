@@ -117,7 +117,11 @@ class MeMeCreatorViewController: UIViewController {
   
   /// When the keyboard hides, we set the frame's y origin to its initial value.
   func keyboardWillHide(notification: NSNotification) {
-    view.frame.origin.y = 0
+    if bottomTextView.isFirstResponder() {
+      if let height = getKeyboardHeight(notification) {
+        view.frame.origin.y += height
+      }
+    }
   }
   
   func keyboardWillShow(notification: NSNotification) {
