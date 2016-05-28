@@ -15,6 +15,8 @@ class MeMeCreatorViewController: UIViewController {
   @IBOutlet weak var imageView: UIImageView!
   @IBOutlet weak var topTextView: UITextField!
   @IBOutlet weak var bottomTextView: UITextField!
+  @IBOutlet weak var bottomToolbar: UIToolbar!
+  @IBOutlet weak var shareButton: UIBarButtonItem!
   
   // MARK: Lifecycle Methods
   override func viewDidLoad() {
@@ -22,6 +24,8 @@ class MeMeCreatorViewController: UIViewController {
     
     topTextView.delegate = self
     bottomTextView.delegate = self
+    
+    shareButton.enabled = false
   }
   
   override func viewWillAppear(animated: Bool) {
@@ -39,9 +43,16 @@ class MeMeCreatorViewController: UIViewController {
     
     topTextView.defaultTextAttributes = memeTextAttributes
     bottomTextView.defaultTextAttributes = memeTextAttributes
-    
     topTextView.textAlignment = .Center
     bottomTextView.textAlignment = .Center
+    
+    subscribeToKeyboardEvents()
+  }
+  
+  override func viewWillDisappear(animated: Bool) {
+    super.viewWillDisappear(animated)
+    
+    unsubscribeFromKeyboardEvents()
   }
   
   // MARK: Actions
@@ -62,6 +73,75 @@ class MeMeCreatorViewController: UIViewController {
     
     presentViewController(getImageController, animated: true, completion: nil)
   }
+  
+  @IBAction func shareMemedImage(sender: UIBarButtonItem) {
+    let memedImage = generateMemedImage()
+    let shareActivityViewController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+    shareActivityViewController.completionWithItemsHandler = ({
+      activityType, completed, returnedItems, activityError in
+      self.save()
+      self.dismissViewControllerAnimated(true, completion: nil)
+    })
+    presentViewController(shareActivityViewController, animated: true, completion: nil)
+  }
+  
+  @IBAction func resetMemeEditor(sender: UIBarButtonItem) {
+    imageView.image = nil
+    topTextView.text = "TOP"
+    bottomTextView.text = "BOTTOM"
+    shareButton.enabled = false
+  }
+  
+  func subscribeToKeyboardEvents() {
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+  }
+  
+  func unsubscribeFromKeyboardEvents() {
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+  }
+  
+  func keyboardWillHide(notification: NSNotification) {
+    view.frame.origin.y = 0
+  }
+  
+  func keyboardWillShow(notification: NSNotification) {
+    if bottomTextView.isFirstResponder() {
+      if let height = getKeyboardHeight(notification) {
+        view.frame.origin.y -= height
+      }
+    }
+  }
+  
+  func getKeyboardHeight(notification: NSNotification) -> CGFloat? {
+    guard let userInfo = notification.userInfo, value = userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue else {
+      print("Did not get required data from notification's userinfo.")
+      return nil
+    }
+    
+    let keyboardFrame = value.CGRectValue()
+    return keyboardFrame.height
+  }
+  
+  func save() {
+    let _ = MeMe(topText: topTextView.text!, bottomText: bottomTextView.text!, image: imageView.image!, memedImage: generateMemedImage())
+  }
+  
+  func generateMemedImage() -> UIImage {
+    bottomToolbar.hidden = true
+    navigationController?.navigationBar.hidden = true
+    
+    UIGraphicsBeginImageContext(view.frame.size)
+    view.drawViewHierarchyInRect(view.frame, afterScreenUpdates: true)
+    let memedImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    
+    navigationController?.navigationBar.hidden = false
+    bottomToolbar.hidden = false
+    
+    return memedImage
+  }
 }
 
 // MARK: - UIImagePickerControllerDelegate
@@ -70,6 +150,7 @@ extension MeMeCreatorViewController: UINavigationControllerDelegate, UIImagePick
     dismissViewControllerAnimated(true, completion: nil)
     if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
       imageView.image = image
+      shareButton.enabled = true
     }
   }
 }
