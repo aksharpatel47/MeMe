@@ -80,7 +80,9 @@ class MeMeEditorViewController: UIViewController {
     let shareActivityViewController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
     shareActivityViewController.completionWithItemsHandler = ({
       activityType, completed, returnedItems, activityError in
-      self.save()
+      if completed {
+        self.save()
+      }
       self.dismissViewControllerAnimated(true, completion: nil)
     })
     presentViewController(shareActivityViewController, animated: true, completion: nil)
