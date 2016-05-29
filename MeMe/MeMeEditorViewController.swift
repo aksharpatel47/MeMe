@@ -24,6 +24,8 @@ class MeMeEditorViewController: UIViewController {
   var allowImageCrop = true
   /// This variables stores the font that the Meme creator will use.
   var fontToUse = "Impact"
+  /// Stores the origin of the frame so that we can revert to it after the keyboard hides.
+  var frameOrigin = CGPoint(x: 0, y: 0)
   
   // MARK: Lifecycle Methods
   override func viewDidLoad() {
@@ -37,6 +39,8 @@ class MeMeEditorViewController: UIViewController {
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
+    
+    frameOrigin = self.view.frame.origin
     
     cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(.Camera)
     
@@ -119,11 +123,7 @@ class MeMeEditorViewController: UIViewController {
   
   /// When the keyboard hides, we set the frame's y origin to its initial value.
   func keyboardWillHide(notification: NSNotification) {
-    if bottomTextField.isFirstResponder() {
-      if let height = getKeyboardHeight(notification) {
-        view.frame.origin.y += height
-      }
-    }
+    self.view.frame.origin = frameOrigin
   }
   
   func keyboardWillShow(notification: NSNotification) {
