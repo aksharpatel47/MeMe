@@ -185,4 +185,14 @@ extension MeMeEditorViewController: UITextFieldDelegate {
     textField.resignFirstResponder()
     return true
   }
+  
+  func textFieldDidEndEditing(textField: UITextField) {
+    if topTextField.text!.isEmpty {
+      topTextField.text = "TOP"
+    }
+    
+    if bottomTextField.text!.isEmpty {
+      bottomTextField.text = "BOTTOM"
+    }
+  }
 }
