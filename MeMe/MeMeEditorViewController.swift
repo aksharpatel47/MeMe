@@ -18,6 +18,8 @@ class MeMeEditorViewController: UIViewController {
   @IBOutlet weak var bottomToolbar: UIToolbar!
   @IBOutlet weak var shareButton: UIBarButtonItem!
   @IBOutlet weak var memeView: UIView!
+  @IBOutlet weak var topTextFieldTopConstraint: NSLayoutConstraint!
+  @IBOutlet weak var bottomTextFieldBottomConstraint: NSLayoutConstraint!
   
   // MARK: Properties
   /// Boolean value which determines if the image should be cropped after picking / taking it from camera / library
@@ -64,6 +66,20 @@ class MeMeEditorViewController: UIViewController {
     subscribeToKeyboardEvents()
   }
   
+  override func viewWillLayoutSubviews() {
+    super.viewWillLayoutSubviews()
+    
+    if let image = imageView.image {
+      let widthRatio = imageView.bounds.size.width / image.size.width
+      let heightRatio = imageView.bounds.size.height / image.size.height
+      let scale = min(widthRatio, heightRatio)
+      let imageHeight = scale * image.size.height
+      let constraintConstant = (memeView.frame.size.height - imageHeight) / 2
+      topTextFieldTopConstraint.constant = constraintConstant
+      bottomTextFieldBottomConstraint.constant = constraintConstant
+    }
+  }
+  
   override func viewWillDisappear(animated: Bool) {
     super.viewWillDisappear(animated)
     
@@ -97,6 +113,8 @@ class MeMeEditorViewController: UIViewController {
     topTextField.text = "TOP"
     bottomTextField.text = "BOTTOM"
     shareButton.enabled = false
+    topTextFieldTopConstraint.constant = 12
+    bottomTextFieldBottomConstraint.constant = 12
   }
   
   func getImageFromSourceType(sourceType: UIImagePickerControllerSourceType) {
