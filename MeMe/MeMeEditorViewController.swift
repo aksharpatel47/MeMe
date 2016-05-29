@@ -195,4 +195,12 @@ extension MeMeEditorViewController: UITextFieldDelegate {
       bottomTextField.text = "BOTTOM"
     }
   }
+  
+  func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    let str: NSString = textField.text!
+    let newStr = str.stringByReplacingCharactersInRange(range, withString: string)
+    textField.text = newStr.uppercaseString
+    
+    return false
+  }
 }
