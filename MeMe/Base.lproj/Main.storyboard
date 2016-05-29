@@ -115,13 +115,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="bottomTextView" destination="djq-Tm-4v3" id="4mh-SF-kwl"/>
+                        <outlet property="bottomTextField" destination="djq-Tm-4v3" id="iXI-dJ-lnI"/>
                         <outlet property="bottomToolbar" destination="CyM-sb-y6f" id="laz-k0-e8p"/>
                         <outlet property="cameraButton" destination="Pk8-Hu-6l6" id="ZLI-dK-v9f"/>
                         <outlet property="imageView" destination="ufn-Q2-9Oj" id="mas-TG-4jc"/>
                         <outlet property="memeView" destination="15f-sR-7ws" id="gud-yE-CZ6"/>
                         <outlet property="shareButton" destination="sgo-wZ-261" id="eTz-1N-YR9"/>
-                        <outlet property="topTextView" destination="WET-Zs-9hJ" id="mQc-3j-eu6"/>
+                        <outlet property="topTextField" destination="WET-Zs-9hJ" id="248-YI-1vz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

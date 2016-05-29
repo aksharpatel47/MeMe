@@ -13,8 +13,8 @@ class MeMeEditorViewController: UIViewController {
   // MARK: Outlets
   @IBOutlet weak var cameraButton: UIBarButtonItem!
   @IBOutlet weak var imageView: UIImageView!
-  @IBOutlet weak var topTextView: UITextField!
-  @IBOutlet weak var bottomTextView: UITextField!
+  @IBOutlet weak var topTextField: UITextField!
+  @IBOutlet weak var bottomTextField: UITextField!
   @IBOutlet weak var bottomToolbar: UIToolbar!
   @IBOutlet weak var shareButton: UIBarButtonItem!
   @IBOutlet weak var memeView: UIView!
@@ -29,8 +29,8 @@ class MeMeEditorViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    topTextView.delegate = self
-    bottomTextView.delegate = self
+    topTextField.delegate = self
+    bottomTextField.delegate = self
     
     shareButton.enabled = false
   }
@@ -52,10 +52,10 @@ class MeMeEditorViewController: UIViewController {
       NSStrokeWidthAttributeName: -3.0
     ]
     
-    topTextView.defaultTextAttributes = memeTextAttributes
-    bottomTextView.defaultTextAttributes = memeTextAttributes
-    topTextView.textAlignment = .Center
-    bottomTextView.textAlignment = .Center
+    topTextField.defaultTextAttributes = memeTextAttributes
+    bottomTextField.defaultTextAttributes = memeTextAttributes
+    topTextField.textAlignment = .Center
+    bottomTextField.textAlignment = .Center
     
     subscribeToKeyboardEvents()
   }
@@ -88,8 +88,8 @@ class MeMeEditorViewController: UIViewController {
   
   @IBAction func resetMemeEditor(sender: UIBarButtonItem) {
     imageView.image = nil
-    topTextView.text = "TOP"
-    bottomTextView.text = "BOTTOM"
+    topTextField.text = "TOP"
+    bottomTextField.text = "BOTTOM"
     shareButton.enabled = false
   }
   
@@ -117,7 +117,7 @@ class MeMeEditorViewController: UIViewController {
   
   /// When the keyboard hides, we set the frame's y origin to its initial value.
   func keyboardWillHide(notification: NSNotification) {
-    if bottomTextView.isFirstResponder() {
+    if bottomTextField.isFirstResponder() {
       if let height = getKeyboardHeight(notification) {
         view.frame.origin.y += height
       }
@@ -125,7 +125,7 @@ class MeMeEditorViewController: UIViewController {
   }
   
   func keyboardWillShow(notification: NSNotification) {
-    if bottomTextView.isFirstResponder() {
+    if bottomTextField.isFirstResponder() {
       if let height = getKeyboardHeight(notification) {
         view.frame.origin.y -= height
       }
@@ -145,7 +145,7 @@ class MeMeEditorViewController: UIViewController {
   // MARK: Additional Functions
   /// Save function save's the meme.
   func save() {
-    let _ = MeMe(topText: topTextView.text!, bottomText: bottomTextView.text!, image: imageView.image!, memedImage: generateMemedImage())
+    let _ = MeMe(topText: topTextField.text!, bottomText: bottomTextField.text!, image: imageView.image!, memedImage: generateMemedImage())
   }
   
   func generateMemedImage() -> UIImage {
