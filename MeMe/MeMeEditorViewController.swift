@@ -68,21 +68,11 @@ class MeMeEditorViewController: UIViewController {
   
   // MARK: Actions
   @IBAction func pickImageFromGallery(sender: UIBarButtonItem) {
-    let imagePickerController = UIImagePickerController()
-    imagePickerController.sourceType = .PhotoLibrary
-    imagePickerController.allowsEditing = allowImageCrop
-    imagePickerController.delegate = self
-    
-    presentViewController(imagePickerController, animated: true, completion: nil)
+    getImageFromSourceType(.PhotoLibrary)
   }
   
   @IBAction func getImageFromCamera(sender: UIBarButtonItem) {
-    let getImageController = UIImagePickerController()
-    getImageController.sourceType = .Camera
-    getImageController.allowsEditing = allowImageCrop
-    getImageController.delegate = self
-    
-    presentViewController(getImageController, animated: true, completion: nil)
+    getImageFromSourceType(.Camera)
   }
   
   @IBAction func shareMemedImage(sender: UIBarButtonItem) {
@@ -101,6 +91,15 @@ class MeMeEditorViewController: UIViewController {
     topTextView.text = "TOP"
     bottomTextView.text = "BOTTOM"
     shareButton.enabled = false
+  }
+  
+  func getImageFromSourceType(sourceType: UIImagePickerControllerSourceType) {
+    let getImageController = UIImagePickerController()
+    getImageController.sourceType = sourceType
+    getImageController.allowsEditing = allowImageCrop
+    getImageController.delegate = self
+    
+    presentViewController(getImageController, animated: true, completion: nil)
   }
   
   // MARK: Keyboard events functions
