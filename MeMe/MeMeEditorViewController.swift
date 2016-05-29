@@ -37,9 +37,8 @@ class MeMeEditorViewController: UIViewController {
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
-    if !UIImagePickerController.isSourceTypeAvailable(.Camera) {
-      cameraButton.enabled = false
-    }
+    
+    cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(.Camera)
     
     // Getting the values from user defaults.
     allowImageCrop = NSUserDefaults.standardUserDefaults().boolForKey(Constants.OfflineKeys.imageCropPreference)
