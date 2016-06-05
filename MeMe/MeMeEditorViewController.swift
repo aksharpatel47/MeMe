@@ -147,7 +147,7 @@ class MeMeEditorViewController: UIViewController {
   func keyboardWillShow(notification: NSNotification) {
     if bottomTextField.isFirstResponder() {
       if let height = getKeyboardHeight(notification) {
-        view.frame.origin.y -= height
+        view.frame.origin.y = frameOrigin.y - height
       }
     }
   }
