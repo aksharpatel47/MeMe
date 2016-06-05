@@ -15,6 +15,9 @@
 		D4AF51D91CCAF350002FC36B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4AF51D71CCAF350002FC36B /* Main.storyboard */; };
 		D4AF51DB1CCAF350002FC36B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4AF51DA1CCAF350002FC36B /* Assets.xcassets */; };
 		D4AF51DE1CCAF350002FC36B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4AF51DC1CCAF350002FC36B /* LaunchScreen.storyboard */; };
+		D4C7CC551D0415B8000DD55F /* MeMeListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C7CC541D0415B8000DD55F /* MeMeListTableViewController.swift */; };
+		D4C7CC571D0415C5000DD55F /* MeMeListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C7CC561D0415C5000DD55F /* MeMeListCollectionViewController.swift */; };
+		D4C7CC591D041F0F000DD55F /* MeMeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C7CC581D041F0F000DD55F /* MeMeDetailViewController.swift */; };
 		D4EBE8FC1CF8D4B400DC4F6D /* Impact.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D4EBE8FB1CF8D4AB00DC4F6D /* Impact.ttf */; };
 		D4EBE8FE1CF8E4D600DC4F6D /* MeMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EBE8FD1CF8E4D600DC4F6D /* MeMe.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +33,9 @@
 		D4AF51DA1CCAF350002FC36B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4AF51DD1CCAF350002FC36B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D4AF51DF1CCAF350002FC36B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4C7CC541D0415B8000DD55F /* MeMeListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeMeListTableViewController.swift; sourceTree = "<group>"; };
+		D4C7CC561D0415C5000DD55F /* MeMeListCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeMeListCollectionViewController.swift; sourceTree = "<group>"; };
+		D4C7CC581D041F0F000DD55F /* MeMeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeMeDetailViewController.swift; sourceTree = "<group>"; };
 		D4EBE8FB1CF8D4AB00DC4F6D /* Impact.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Impact.ttf; sourceTree = "<group>"; };
 		D4EBE8FD1CF8E4D600DC4F6D /* MeMe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeMe.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,6 +75,9 @@
 				D4EBE8FD1CF8E4D600DC4F6D /* MeMe.swift */,
 				D4AF51D51CCAF350002FC36B /* MeMeEditorViewController.swift */,
 				D4AF51D71CCAF350002FC36B /* Main.storyboard */,
+				D4C7CC581D041F0F000DD55F /* MeMeDetailViewController.swift */,
+				D4C7CC541D0415B8000DD55F /* MeMeListTableViewController.swift */,
+				D4C7CC561D0415C5000DD55F /* MeMeListCollectionViewController.swift */,
 				D48C9C541CF9AEE800BB356D /* SelectFontViewController.swift */,
 				D48C9C521CF99F3600BB356D /* Constants.swift */,
 				D48C9C501CF99DF200BB356D /* SettingsTableViewController.swift */,
@@ -161,11 +170,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D48C9C531CF99F3600BB356D /* Constants.swift in Sources */,
+				D4C7CC551D0415B8000DD55F /* MeMeListTableViewController.swift in Sources */,
 				D48C9C551CF9AEE800BB356D /* SelectFontViewController.swift in Sources */,
 				D48C9C511CF99DF200BB356D /* SettingsTableViewController.swift in Sources */,
+				D4C7CC571D0415C5000DD55F /* MeMeListCollectionViewController.swift in Sources */,
 				D4AF51D61CCAF350002FC36B /* MeMeEditorViewController.swift in Sources */,
 				D4AF51D41CCAF350002FC36B /* AppDelegate.swift in Sources */,
 				D4EBE8FE1CF8E4D600DC4F6D /* MeMe.swift in Sources */,
+				D4C7CC591D041F0F000DD55F /* MeMeDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

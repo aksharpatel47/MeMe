@@ -165,7 +165,9 @@ class MeMeEditorViewController: UIViewController {
   // MARK: Additional Functions
   /// Save function save's the meme.
   func save() {
-    let _ = MeMe(topText: topTextField.text!, bottomText: bottomTextField.text!, image: imageView.image!, memedImage: generateMemedImage())
+    let newMeme = MeMe(topText: topTextField.text!, bottomText: bottomTextField.text!, image: imageView.image!, memedImage: generateMemedImage())
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    appDelegate.memes.append(newMeme)
   }
   
   func generateMemedImage() -> UIImage {
