@@ -449,7 +449,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Meme" id="iWp-yT-8J6">
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="edit" id="A5V-fA-jTk">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="A5V-fA-jTk">
                             <connections>
                                 <segue destination="Pv5-qG-wB7" kind="presentation" identifier="editMeme" id="kmI-ga-NKl"/>
                             </connections>
@@ -466,7 +466,6 @@
         <!--Navigation Controller-->
         <scene sceneID="c5m-VD-yz6">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oaS-m9-705" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Pv5-qG-wB7" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
@@ -485,6 +484,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ra0-0n-yvt"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oaS-m9-705" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2422" y="-350"/>
         </scene>
@@ -576,7 +576,7 @@
         <image name="TableViewUnselected" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="upj-tn-DJn"/>
         <segue reference="2P0-F7-CrD"/>
+        <segue reference="upj-tn-DJn"/>
     </inferredMetricsTieBreakers>
 </document>

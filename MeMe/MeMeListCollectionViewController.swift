@@ -18,15 +18,35 @@ class MeMeListCollectionViewController: UICollectionViewController {
   
   var memes = [MeMe]()
   var appDelegate: AppDelegate!
+  var noMemesMessageView: UIView!
+  var noMemesMessageLabel: UILabel!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
+    noMemesMessageView = UIView(frame: collectionView!.bounds)
+    noMemesMessageLabel = UILabel(frame: CGRectInset(collectionView!.bounds, 10.0, 10.0))
+    noMemesMessageLabel.text = "You have not shared any Memes yet. Create and share Memes to see them here."
+    noMemesMessageLabel.font = UIFont.systemFontOfSize(15)
+    noMemesMessageLabel.textColor = UIColor.lightGrayColor()
+    noMemesMessageLabel.lineBreakMode = .ByWordWrapping
+    noMemesMessageLabel.numberOfLines = 3
+    noMemesMessageLabel.textAlignment = .Center
+    
+    noMemesMessageView.addSubview(noMemesMessageLabel)
+    
+    view.addSubview(noMemesMessageView)
   }
   
   override func viewWillAppear(animated: Bool) {
     memes = appDelegate.memes
+    
+    if memes.count > 0 {
+      noMemesMessageView.hidden = true
+    }
+    
     collectionView?.reloadData()
   }
   

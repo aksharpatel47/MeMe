@@ -38,6 +38,29 @@ class MeMeListTableViewController: UITableViewController {
     return 1
   }
   
+  override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    if memes.count == 0 {
+      let noMemesFooter = UIView(frame: tableView.bounds)
+      let noMemesLabel = UILabel(frame: CGRectInset(tableView.bounds, 10.0, 10.0))
+      noMemesLabel.text = "You have not shared any Memes yet. Create and share Memes to see them here."
+      noMemesLabel.font = UIFont.systemFontOfSize(15)
+      noMemesLabel.textColor = UIColor.lightGrayColor()
+      noMemesLabel.lineBreakMode = .ByWordWrapping
+      noMemesLabel.numberOfLines = 3
+      noMemesLabel.textAlignment = .Center
+
+      noMemesFooter.addSubview(noMemesLabel)
+      
+      return  noMemesFooter
+    }
+    
+    return nil
+  }
+  
+  override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    return memes.count == 0 ? tableView.bounds.height : 0
+  }
+  
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return memes.count
   }
