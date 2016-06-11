@@ -117,8 +117,9 @@ class MeMeEditorViewController: UIViewController {
       activityType, completed, returnedItems, activityError in
       if completed {
         self.save()
-        self.dismissViewControllerAnimated(true, completion: nil)
       }
+      
+      self.dismissViewControllerAnimated(true, completion: nil)
     })
     presentViewController(shareActivityViewController, animated: true, completion: nil)
   }
