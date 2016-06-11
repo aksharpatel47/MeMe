@@ -28,6 +28,7 @@ class MeMeEditorViewController: UIViewController {
   var fontToUse = "Impact"
   /// Stores the origin of the frame so that we can revert to it after the keyboard hides.
   var frameOrigin = CGPoint(x: 0, y: 0)
+  var memeToEdit: MeMe!
   
   // MARK: Lifecycle Methods
   override func viewDidLoad() {
@@ -37,6 +38,13 @@ class MeMeEditorViewController: UIViewController {
     bottomTextField.delegate = self
     
     shareButton.enabled = false
+    
+    if let meme = memeToEdit {
+      topTextField.text = meme.topText
+      bottomTextField.text = meme.bottomText
+      imageView.image = meme.image
+      shareButton.enabled = true
+    }
   }
   
   override func viewWillAppear(animated: Bool) {
@@ -64,6 +72,11 @@ class MeMeEditorViewController: UIViewController {
     bottomTextField.textAlignment = .Center
     
     subscribeToKeyboardEvents()
+  }
+  
+  override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+    
   }
   
   override func viewWillLayoutSubviews() {
@@ -109,6 +122,12 @@ class MeMeEditorViewController: UIViewController {
   }
   
   @IBAction func resetMemeEditor(sender: UIBarButtonItem) {
+    
+    if imageView.image == nil {
+      dismissViewControllerAnimated(true, completion: nil)
+      return
+    }
+    
     imageView.image = nil
     topTextField.text = "TOP"
     bottomTextField.text = "BOTTOM"
