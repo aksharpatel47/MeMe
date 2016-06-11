@@ -82,10 +82,6 @@ class MeMeListTableViewController: UITableViewController {
     performSegueWithIdentifier(Constants.Segues.memeDetail, sender: indexPath)
   }
   
-  override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    return true
-  }
-  
   override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
     switch editingStyle {
     case .Delete:
