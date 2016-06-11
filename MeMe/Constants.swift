@@ -27,6 +27,14 @@ struct Constants {
     struct FontsTable {
       static let fontCell = "fontCell"
     }
+    
+    struct MemesTableView {
+      static let memeTableCell = "memeTableCell"
+    }
+    
+    struct MemesCollectionView {
+      static let memeCollectionCell = "memeCollectionCell"
+    }
   }
   
   struct OfflineKeys {
