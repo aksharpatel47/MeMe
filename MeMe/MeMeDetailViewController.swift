@@ -9,27 +9,18 @@
 import UIKit
 
 class MeMeDetailViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+  
+  /// (segue!) The meme to display in detail.
+  var meme: MeMe!
+  
+  // MARK: Outlets
+  @IBOutlet weak var generatedMemeImage: UIImageView!
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    if let meme = meme {
+      generatedMemeImage.image = meme.memedImage
     }
-    */
-
+  }
 }

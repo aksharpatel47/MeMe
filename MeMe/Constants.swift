@@ -12,6 +12,7 @@ struct Constants {
   
   struct Segues {
     static let selectFont = "selectFont"
+    static let memeDetail = "memeDetail"
   }
   
   struct Events {
