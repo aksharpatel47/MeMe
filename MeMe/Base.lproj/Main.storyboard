@@ -59,6 +59,9 @@
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CyM-sb-y6f" userLabel="Bottom Toolbar">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="pf8-gc-d09"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="UtY-6a-doz"/>
                                     <barButtonItem systemItem="camera" id="Pk8-Hu-6l6">
@@ -80,12 +83,12 @@
                             </toolbar>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="CyM-sb-y6f" firstAttribute="top" secondItem="15f-sR-7ws" secondAttribute="bottom" id="3x5-XZ-HPm"/>
                             <constraint firstAttribute="trailing" secondItem="15f-sR-7ws" secondAttribute="trailing" id="E6v-Nk-czw"/>
                             <constraint firstItem="CyM-sb-y6f" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="RhJ-LS-xpG"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="CyM-sb-y6f" secondAttribute="bottom" id="Ups-R8-W38"/>
                             <constraint firstItem="15f-sR-7ws" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="jI6-eM-3SK"/>
                             <constraint firstItem="15f-sR-7ws" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="qdC-dB-hCj"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="15f-sR-7ws" secondAttribute="bottom" constant="44" id="sEy-D5-Ts2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="CyM-sb-y6f" secondAttribute="trailing" constant="-20" id="zFX-2q-b7d"/>
                         </constraints>
                     </view>
@@ -434,9 +437,9 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MSv-7x-Gop">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <color key="backgroundColor" red="0.12854175079999999" green="0.093742525430000001" blue="0.2112083333" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="MSv-7x-Gop" firstAttribute="leading" secondItem="eHK-Ho-ySz" secondAttribute="leading" id="Ls6-Zh-xXJ"/>
                             <constraint firstItem="xcF-T1-Az9" firstAttribute="top" secondItem="MSv-7x-Gop" secondAttribute="bottom" id="QaW-aM-46E"/>
