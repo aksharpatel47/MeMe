@@ -348,7 +348,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Sent Memes" id="KFc-ue-hIH">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="fgY-F8-fBl"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="go1-ph-qO8">
                             <connections>
                                 <segue destination="Pv5-qG-wB7" kind="presentation" identifier="createMeme" id="N8X-2N-KxD"/>
@@ -408,7 +407,6 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Sent Memes" id="0Hd-XH-9fb">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="pCd-Yz-h1r"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DfR-Da-f6g">
                             <connections>
                                 <segue destination="Pv5-qG-wB7" kind="presentation" identifier="createMeme" id="upj-tn-DJn"/>
@@ -437,7 +435,6 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MSv-7x-Gop">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
-                                <color key="backgroundColor" red="0.12854175079999999" green="0.093742525430000001" blue="0.2112083333" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                         </subviews>
                         <constraints>
@@ -575,7 +572,7 @@
         <image name="TableViewUnselected" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kmI-ga-NKl"/>
         <segue reference="2P0-F7-CrD"/>
+        <segue reference="kmI-ga-NKl"/>
     </inferredMetricsTieBreakers>
 </document>
