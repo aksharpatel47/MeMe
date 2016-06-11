@@ -29,6 +29,9 @@ class MeMeEditorViewController: UIViewController {
   /// Stores the origin of the frame so that we can revert to it after the keyboard hides.
   var frameOrigin = CGPoint(x: 0, y: 0)
   var memeToEdit: MeMe!
+  var cancelButton: UIBarButtonItem!
+  var closeButton: UIBarButtonItem!
+  
   
   // MARK: Lifecycle Methods
   override func viewDidLoad() {
@@ -38,6 +41,10 @@ class MeMeEditorViewController: UIViewController {
     bottomTextField.delegate = self
     
     shareButton.enabled = false
+    
+    cancelButton = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(resetMemeEditor(_:)))
+    closeButton = UIBarButtonItem(title: "Close", style: .Done, target: self, action: #selector(closeEditor(_:)))
+    navigationItem.rightBarButtonItem = closeButton
     
     if let meme = memeToEdit {
       topTextField.text = meme.topText
@@ -72,11 +79,6 @@ class MeMeEditorViewController: UIViewController {
     bottomTextField.textAlignment = .Center
     
     subscribeToKeyboardEvents()
-  }
-  
-  override func viewDidAppear(animated: Bool) {
-    super.viewDidAppear(animated)
-    
   }
   
   override func viewWillLayoutSubviews() {
@@ -115,25 +117,25 @@ class MeMeEditorViewController: UIViewController {
       activityType, completed, returnedItems, activityError in
       if completed {
         self.save()
+        self.dismissViewControllerAnimated(true, completion: nil)
       }
-      self.dismissViewControllerAnimated(true, completion: nil)
     })
     presentViewController(shareActivityViewController, animated: true, completion: nil)
   }
   
-  @IBAction func resetMemeEditor(sender: UIBarButtonItem) {
-    
-    if imageView.image == nil {
-      dismissViewControllerAnimated(true, completion: nil)
-      return
-    }
-    
+  func resetMemeEditor(sender: UIBarButtonItem) {
     imageView.image = nil
     topTextField.text = "TOP"
     bottomTextField.text = "BOTTOM"
     shareButton.enabled = false
     topTextFieldTopConstraint.constant = 12
     bottomTextFieldBottomConstraint.constant = 12
+    
+    navigationItem.rightBarButtonItem = closeButton
+  }
+  
+  func closeEditor(sender: UIBarButtonItem) {
+    dismissViewControllerAnimated(true, completion: nil)
   }
   
   func getImageFromSourceType(sourceType: UIImagePickerControllerSourceType) {
@@ -208,6 +210,7 @@ extension MeMeEditorViewController: UINavigationControllerDelegate, UIImagePicke
     if let image = info[imageKey] as? UIImage {
       imageView.image = image
       shareButton.enabled = true
+      navigationItem.rightBarButtonItem = cancelButton
     }
   }
 }
@@ -225,14 +228,24 @@ extension MeMeEditorViewController: UITextFieldDelegate {
     return true
   }
   
+  /// In this function we make sure that the user has interacted with the Meme editor in a meaningful
+  /// way. When such an interation occurs we add a cancel button to the right side of navigation item.
   func textFieldDidEndEditing(textField: UITextField) {
     if topTextField.text!.isEmpty {
       topTextField.text = "TOP"
+      return
     }
     
     if bottomTextField.text!.isEmpty {
       bottomTextField.text = "BOTTOM"
+      return
     }
+    
+    if topTextField.text == "TOP" && bottomTextField.text == "BOTTOM" {
+      return
+    }
+    
+    navigationItem.rightBarButtonItem = cancelButton
   }
   
   func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
