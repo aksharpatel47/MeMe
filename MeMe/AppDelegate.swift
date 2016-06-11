@@ -22,6 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       Constants.OfflineKeys.fontToUse: "Impact"
     ])
     
+    // Theming UITabBar Items
+    UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: Constants.Colors.pink], forState: .Selected)
+    UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: Constants.Colors.grey], forState: .Normal)
+    
     return true
   }
 

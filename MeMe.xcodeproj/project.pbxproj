@@ -10,10 +10,10 @@
 		D48C9C511CF99DF200BB356D /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48C9C501CF99DF200BB356D /* SettingsTableViewController.swift */; };
 		D48C9C531CF99F3600BB356D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48C9C521CF99F3600BB356D /* Constants.swift */; };
 		D48C9C551CF9AEE800BB356D /* SelectFontViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48C9C541CF9AEE800BB356D /* SelectFontViewController.swift */; };
+		D495D86A1D0C4E94007F7C20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D495D8691D0C4E94007F7C20 /* Assets.xcassets */; };
 		D4AF51D41CCAF350002FC36B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF51D31CCAF350002FC36B /* AppDelegate.swift */; };
 		D4AF51D61CCAF350002FC36B /* MeMeEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF51D51CCAF350002FC36B /* MeMeEditorViewController.swift */; };
 		D4AF51D91CCAF350002FC36B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4AF51D71CCAF350002FC36B /* Main.storyboard */; };
-		D4AF51DB1CCAF350002FC36B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4AF51DA1CCAF350002FC36B /* Assets.xcassets */; };
 		D4AF51DE1CCAF350002FC36B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4AF51DC1CCAF350002FC36B /* LaunchScreen.storyboard */; };
 		D4C7CC551D0415B8000DD55F /* MeMeListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C7CC541D0415B8000DD55F /* MeMeListTableViewController.swift */; };
 		D4C7CC571D0415C5000DD55F /* MeMeListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C7CC561D0415C5000DD55F /* MeMeListCollectionViewController.swift */; };
@@ -26,11 +26,11 @@
 		D48C9C501CF99DF200BB356D /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		D48C9C521CF99F3600BB356D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D48C9C541CF9AEE800BB356D /* SelectFontViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectFontViewController.swift; sourceTree = "<group>"; };
+		D495D8691D0C4E94007F7C20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4AF51D01CCAF350002FC36B /* MeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4AF51D31CCAF350002FC36B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4AF51D51CCAF350002FC36B /* MeMeEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeMeEditorViewController.swift; sourceTree = "<group>"; };
 		D4AF51D81CCAF350002FC36B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D4AF51DA1CCAF350002FC36B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4AF51DD1CCAF350002FC36B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D4AF51DF1CCAF350002FC36B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4C7CC541D0415B8000DD55F /* MeMeListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeMeListTableViewController.swift; sourceTree = "<group>"; };
@@ -80,8 +80,8 @@
 				D4C7CC561D0415C5000DD55F /* MeMeListCollectionViewController.swift */,
 				D48C9C541CF9AEE800BB356D /* SelectFontViewController.swift */,
 				D48C9C521CF99F3600BB356D /* Constants.swift */,
+				D495D8691D0C4E94007F7C20 /* Assets.xcassets */,
 				D48C9C501CF99DF200BB356D /* SettingsTableViewController.swift */,
-				D4AF51DA1CCAF350002FC36B /* Assets.xcassets */,
 				D4AF51DC1CCAF350002FC36B /* LaunchScreen.storyboard */,
 				D4AF51DF1CCAF350002FC36B /* Info.plist */,
 			);
@@ -157,7 +157,7 @@
 			files = (
 				D4EBE8FC1CF8D4B400DC4F6D /* Impact.ttf in Resources */,
 				D4AF51DE1CCAF350002FC36B /* LaunchScreen.storyboard in Resources */,
-				D4AF51DB1CCAF350002FC36B /* Assets.xcassets in Resources */,
+				D495D86A1D0C4E94007F7C20 /* Assets.xcassets in Resources */,
 				D4AF51D91CCAF350002FC36B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
