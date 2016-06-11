@@ -43,9 +43,7 @@ class MeMeListCollectionViewController: UICollectionViewController {
   override func viewWillAppear(animated: Bool) {
     memes = appDelegate.memes
     
-    if memes.count > 0 {
-      noMemesMessageView.hidden = true
-    }
+    noMemesMessageView.hidden = memes.count > 0
     
     collectionView?.reloadData()
   }

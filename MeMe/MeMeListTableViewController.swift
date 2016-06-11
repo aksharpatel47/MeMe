@@ -15,19 +15,21 @@ class MemeListTableViewCell: UITableViewCell {
 
 class MeMeListTableViewController: UITableViewController {
   
-  var memes: [MeMe] {
-    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-    return appDelegate.memes
-  }
+  var memes = [MeMe]()
+  var appDelegate: AppDelegate!
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     tableView.tableFooterView = UIView()
   }
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
+    
+    memes = appDelegate.memes
     
     tableView.reloadData()
   }
@@ -78,6 +80,25 @@ class MeMeListTableViewController: UITableViewController {
   
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     performSegueWithIdentifier(Constants.Segues.memeDetail, sender: indexPath)
+  }
+  
+  override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    return true
+  }
+  
+  override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    switch editingStyle {
+    case .Delete:
+      memes.removeAtIndex(indexPath.row)
+      appDelegate.memes = memes
+      if memes.count == 0 {
+        tableView.reloadData()
+      } else {
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+      }
+    default:
+      return
+    }
   }
   
   // MARK: - Navigation
