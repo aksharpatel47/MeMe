@@ -29,9 +29,6 @@ class MeMeEditorViewController: UIViewController {
   /// Stores the origin of the frame so that we can revert to it after the keyboard hides.
   var frameOrigin = CGPoint(x: 0, y: 0)
   var memeToEdit: MeMe!
-  var cancelButton: UIBarButtonItem!
-  var closeButton: UIBarButtonItem!
-  
   
   // MARK: Lifecycle Methods
   override func viewDidLoad() {
@@ -41,10 +38,6 @@ class MeMeEditorViewController: UIViewController {
     bottomTextField.delegate = self
     
     shareButton.enabled = false
-    
-    cancelButton = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(resetMemeEditor(_:)))
-    closeButton = UIBarButtonItem(title: "Close", style: .Done, target: self, action: #selector(closeEditor(_:)))
-    navigationItem.rightBarButtonItem = closeButton
     
     if let meme = memeToEdit {
       topTextField.text = meme.topText
@@ -124,18 +117,7 @@ class MeMeEditorViewController: UIViewController {
     presentViewController(shareActivityViewController, animated: true, completion: nil)
   }
   
-  func resetMemeEditor(sender: UIBarButtonItem) {
-    imageView.image = nil
-    topTextField.text = "TOP"
-    bottomTextField.text = "BOTTOM"
-    shareButton.enabled = false
-    topTextFieldTopConstraint.constant = 12
-    bottomTextFieldBottomConstraint.constant = 12
-    
-    navigationItem.rightBarButtonItem = closeButton
-  }
-  
-  func closeEditor(sender: UIBarButtonItem) {
+  @IBAction func closeEditor(sender: UIBarButtonItem) {
     dismissViewControllerAnimated(true, completion: nil)
   }
   
@@ -211,7 +193,6 @@ extension MeMeEditorViewController: UINavigationControllerDelegate, UIImagePicke
     if let image = info[imageKey] as? UIImage {
       imageView.image = image
       shareButton.enabled = true
-      navigationItem.rightBarButtonItem = cancelButton
     }
   }
 }
@@ -234,19 +215,11 @@ extension MeMeEditorViewController: UITextFieldDelegate {
   func textFieldDidEndEditing(textField: UITextField) {
     if topTextField.text!.isEmpty {
       topTextField.text = "TOP"
-      return
     }
     
     if bottomTextField.text!.isEmpty {
       bottomTextField.text = "BOTTOM"
-      return
     }
-    
-    if topTextField.text == "TOP" && bottomTextField.text == "BOTTOM" {
-      return
-    }
-    
-    navigationItem.rightBarButtonItem = cancelButton
   }
   
   func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {

@@ -99,7 +99,11 @@
                                 <action selector="shareMemedImage:" destination="BYZ-38-t0r" id="rOv-y9-aTS"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Close" style="done" id="22X-EZ-mLg"/>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="cancel" id="22X-EZ-mLg">
+                            <connections>
+                                <action selector="closeEditor:" destination="BYZ-38-t0r" id="fGG-rU-csp"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="bottomTextField" destination="djq-Tm-4v3" id="iXI-dJ-lnI"/>
