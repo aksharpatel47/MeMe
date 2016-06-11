@@ -298,7 +298,7 @@
             </objects>
             <point key="canvasLocation" x="-455" y="-511"/>
         </scene>
-        <!--Meme Table View-->
+        <!--Sent Memes-->
         <scene sceneID="9ET-xs-oXN">
             <objects>
                 <tableViewController id="Elb-3K-jG8" customClass="MeMeListTableViewController" customModule="MeMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -347,7 +347,7 @@
                             <outlet property="delegate" destination="Elb-3K-jG8" id="BjM-mS-NN0"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Meme Table View" id="KFc-ue-hIH">
+                    <navigationItem key="navigationItem" title="Sent Memes" id="KFc-ue-hIH">
                         <barButtonItem key="backBarButtonItem" title="Back" id="fgY-F8-fBl"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="go1-ph-qO8">
                             <connections>
@@ -363,7 +363,7 @@
             </objects>
             <point key="canvasLocation" x="1455" y="-916"/>
         </scene>
-        <!--Meme Collection View-->
+        <!--Sent Memes-->
         <scene sceneID="uq1-qo-wJg">
             <objects>
                 <collectionViewController id="Z1Q-c5-n69" customClass="MeMeListCollectionViewController" customModule="MeMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -407,7 +407,7 @@
                             <outlet property="delegate" destination="Z1Q-c5-n69" id="IHm-dp-TdE"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Meme Collection View" id="0Hd-XH-9fb">
+                    <navigationItem key="navigationItem" title="Sent Memes" id="0Hd-XH-9fb">
                         <barButtonItem key="backBarButtonItem" title="Back" id="pCd-Yz-h1r"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DfR-Da-f6g">
                             <connections>
@@ -423,7 +423,7 @@
             </objects>
             <point key="canvasLocation" x="1469" y="-259"/>
         </scene>
-        <!--Meme-->
+        <!--Meme Detail-->
         <scene sceneID="S7y-7u-0au">
             <objects>
                 <viewController id="omf-B4-0nV" customClass="MeMeDetailViewController" customModule="MeMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -447,7 +447,7 @@
                             <constraint firstAttribute="trailing" secondItem="MSv-7x-Gop" secondAttribute="trailing" id="kQx-VU-e0e"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Meme" id="iWp-yT-8J6">
+                    <navigationItem key="navigationItem" title="Meme Detail" id="iWp-yT-8J6">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="A5V-fA-jTk">
                             <connections>
                                 <segue destination="Pv5-qG-wB7" kind="presentation" identifier="editMeme" id="kmI-ga-NKl"/>
@@ -575,7 +575,7 @@
         <image name="TableViewUnselected" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2P0-F7-CrD"/>
         <segue reference="kmI-ga-NKl"/>
+        <segue reference="2P0-F7-CrD"/>
     </inferredMetricsTieBreakers>
 </document>
